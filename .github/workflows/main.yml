@@ -1,33 +1,42 @@
-name: Deploy to GitHub Pages
+# Простой workflow для деплоя статического сайта на GitHub Pages
+name: Deploy static site to Pages
 
 on:
+  # Запускать при пуше в main ветку
   push:
-    branches: [ main ]
+    branches: ["main"]
+  
+  # Разрешить запуск workflow вручную
   workflow_dispatch:
 
-# Установка прав
+# Установка необходимых разрешений
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Разрешить только один параллельный деплой
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  # Одна работа для деплоя
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
-      # Это простое решение без использования upload-artifact
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          folder: .  # Папка, из которой будет делаться публикация
-          branch: gh-pages  # Ветка для публикации
+          # Загрузить содержимое репозитория
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
