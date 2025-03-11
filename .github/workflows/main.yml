@@ -5,17 +5,19 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Установка прав
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  deploy:
+  build-and-deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,11 +25,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: '.'
-      
+      # Это простое решение без использования upload-artifact
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .  # Папка, из которой будет делаться публикация
+          branch: gh-pages  # Ветка для публикации
