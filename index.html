@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameZone - Игровой клуб</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">GameZone</div>
+        <!-- Гамбургер-меню для мобильных устройств -->
+        <div class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav>
+          <ul>
+            <li><a onclick="navigateTo('home')">Главная</a></li>
+            <li><a onclick="navigateTo('tariffs')">Тарифы</a></li>
+            <li><a onclick="navigateTo('zones')">Игровые зоны</a></li>
+            <li><a onclick="navigateTo('tournaments')">Турниры</a></li>
+            <li><a onclick="navigateTo('contacts')">Контакты</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section id="home" class="page active">
+        <div class="hero-section">
+          <h1 class="main-title">
+            Добро пожаловать в <span class="highlight">GameZone</span>
+          </h1>
+          <p class="subtitle">
+            Лучший игровой клуб с топовым оборудованием и киберспортивными
+            турнирами!
+          </p>
+
+          <div class="features-container">
+            <div class="feature-card">
+              <div class="feature-icon">🖥️</div>
+              <h3>Мощные ПК</h3>
+              <p>RTX 3070/4080, 32GB RAM</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🎮</div>
+              <h3>Консоли</h3>
+              <p>PS5 и Xbox Series X</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🥽</div>
+              <h3>VR Зона</h3>
+              <p>HTC Vive Pro 2</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🏆</div>
+              <h3>Турниры</h3>
+              <p>Призовой фонд до 50 000 ₽</p>
+            </div>
+          </div>
+
+          <button
+            class="main-button pulse-animation"
+            onclick="navigateTo('tariffs')"
+          >
+            Наши тарифы
+          </button>
+        </div>
+
+        <div class="home-section news-section">
+          <h2>Ближайшие турниры</h2>
+          <div class="news-container">
+            <div class="news-card">
+              <div class="news-date">15 марта</div>
+              <h3>Турнир CS:GO</h3>
+              <p>
+                Командный турнир 5х5 с призовым фондом 30 000 ₽. Регистрация
+                открыта!
+              </p>
+              <button
+                class="secondary-button"
+                onclick="showTournamentInfo('csgo')"
+              >
+                Подробнее
+              </button>
+            </div>
+            <div class="news-card">
+              <div class="news-date">23 марта</div>
+              <h3>Чемпионат по Dota 2</h3>
+              <p>
+                Ежемесячный турнир с профессиональным комментированием и
+                призами.
+              </p>
+              <button
+                class="secondary-button"
+                onclick="showTournamentInfo('dota')"
+              >
+                Подробнее
+              </button>
+            </div>
+            <div class="news-card">
+              <div class="news-date">17 марта</div>
+              <h3>Fortnite Weekends</h3>
+              <p>
+                Субботние соревнования по Battle Royale в категориях Solo и Duo.
+              </p>
+              <button
+                class="secondary-button"
+                onclick="showTournamentInfo('fortnite')"
+              >
+                Подробнее
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-section testimonials-section">
+          <h2>Отзывы наших посетителей</h2>
+          <div class="testimonials-container">
+            <div class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p class="quote">
+                "Лучший игровой клуб в городе! Железо топовое, атмосфера супер,
+                персонал всегда поможет. Хожу сюда регулярно уже полгода."
+              </p>
+              <p class="author">— Алексей К.</p>
+            </div>
+            <div class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p class="quote">
+                "Отличное место для турниров! Участвовал в соревнованиях по
+                CS:GO, всё было организовано на высшем уровне."
+              </p>
+              <p class="author">— Максим Д.</p>
+            </div>
+            <div class="testimonial">
+              <div class="stars">★★★★☆</div>
+              <p class="quote">
+                "Впечатлила VR-зона! Большое пространство, современное
+                оборудование и классная подборка игр. Обязательно приду еще!"
+              </p>
+              <p class="author">— Анна П.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-section cta-section">
+          <h2>Готов к игре?</h2>
+          <p>Приходи в GameZone и ощути невероятную атмосферу киберспорта!</p>
+          <button
+            class="main-button glow-animation"
+            onclick="navigateTo('contacts')"
+          >
+            Найти нас
+          </button>
+        </div>
+      </section>
+
+      <section id="tariffs" class="page">
+        <h1 class="section-title">Тарифы</h1>
+        <div class="tariff-intro">
+          <p>
+            Выберите подходящий тариф для максимального игрового удовольствия
+          </p>
+        </div>
+
+        <div class="tariffs-cards-container">
+          <div class="tariff-card">
+            <div class="tariff-icon">🖥️</div>
+            <h3 class="tariff-name">Стандартный</h3>
+            <div class="tariff-price">300 ₽<span>/час</span></div>
+            <ul class="tariff-features">
+              <li>Игровые ПК с GTX 3070</li>
+              <li>32GB RAM</li>
+              <li>27" мониторы 144Hz</li>
+              <li>Комфортные кресла</li>
+            </ul>
+            <button class="tariff-button">Выбрать</button>
+          </div>
+
+          <div class="tariff-card popular">
+            <div class="popular-badge">Популярный</div>
+            <div class="tariff-icon">🎮</div>
+            <h3 class="tariff-name">Пакет "Геймер"</h3>
+            <div class="tariff-price">1200 ₽<span>/5 часов</span></div>
+            <ul class="tariff-features">
+              <li>Экономия 300 ₽</li>
+              <li>Игровые ПК с GTX 3070</li>
+              <li>32GB RAM</li>
+              <li>Бесплатный напиток</li>
+            </ul>
+            <button class="tariff-button glow-animation">Выбрать</button>
+          </div>
+
+          <div class="tariff-card">
+            <div class="tariff-icon">🌙</div>
+            <h3 class="tariff-name">Ночной марафон</h3>
+            <div class="tariff-price">1500 ₽<span>/ночь</span></div>
+            <ul class="tariff-features">
+              <li>С 23:00 до 8:00</li>
+              <li>Неограниченное время</li>
+              <li>Энергетик в подарок</li>
+              <li>Ночные турниры</li>
+            </ul>
+            <button class="tariff-button">Выбрать</button>
+          </div>
+
+          <div class="tariff-card premium">
+            <div class="premium-badge">Premium</div>
+            <div class="tariff-icon">👑</div>
+            <h3 class="tariff-name">VIP-зона</h3>
+            <div class="tariff-price">600 ₽<span>/час</span></div>
+            <ul class="tariff-features">
+              <li>Топовые ПК с RTX 4080</li>
+              <li>Кресла DXRacer</li>
+              <li>32" изогнутые мониторы</li>
+              <li>Отдельная комната</li>
+            </ul>
+            <button class="tariff-button">Выбрать</button>
+          </div>
+
+          <div class="tariff-card">
+            <div class="tariff-icon">🎮</div>
+            <h3 class="tariff-name">Консольная зона</h3>
+            <div class="tariff-price">400 ₽<span>/час</span></div>
+            <ul class="tariff-features">
+              <li>PS5 и Xbox Series X</li>
+              <li>4K телевизоры</li>
+              <li>Комфортные диваны</li>
+              <li>Библиотека игр</li>
+            </ul>
+            <button class="tariff-button">Выбрать</button>
+          </div>
+
+          <div class="tariff-card">
+            <div class="tariff-icon">🥽</div>
+            <h3 class="tariff-name">VR-зона</h3>
+            <div class="tariff-price">400 ₽<span>/30 мин</span></div>
+            <ul class="tariff-features">
+              <li>HTC Vive Pro 2</li>
+              <li>Просторная игровая зона</li>
+              <li>Погружение в VR</li>
+              <li>50+ VR игр</li>
+            </ul>
+            <button class="tariff-button">Выбрать</button>
+          </div>
+        </div>
+
+        <div class="additional-options">
+          <h2 class="additional-title">Дополнительные опции</h2>
+          <div class="options-container">
+            <div class="option-item">
+              <div class="option-icon">🍕</div>
+              <div class="option-info">
+                <h4>Еда и напитки</h4>
+                <p>Закажите пиццу, снеки и напитки не отрываясь от игры</p>
+              </div>
+            </div>
+
+            <div class="option-item">
+              <div class="option-icon">👥</div>
+              <div class="option-info">
+                <h4>Групповые скидки</h4>
+                <p>Приходите с друзьями и получайте скидку до 20%</p>
+              </div>
+            </div>
+
+            <div class="option-item">
+              <div class="option-icon">🎂</div>
+              <div class="option-info">
+                <h4>День рождения</h4>
+                <p>Особые условия и подарки в ваш день рождения</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tariff-cta">
+          <h3>Остались вопросы?</h3>
+          <p>
+            Наши администраторы всегда готовы помочь с выбором подходящего
+            тарифа
+          </p>
+          <button
+            class="main-button pulse-animation"
+            onclick="navigateTo('contacts')"
+          >
+            Связаться с нами
+          </button>
+        </div>
+      </section>
+
+      <section id="zones" class="page">
+        <h1>Игровые зоны</h1>
+        <div class="zones-container">
+          <div class="zone-card" onclick="showZoneInfo('pc')">
+            <img src="images/BASE.jpg" alt="Зона с ПК" class="card-image" />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">Зона с ПК</div>
+              <p>Мощные игровые компьютеры с последним железом</p>
+            </div>
+          </div>
+          <div class="zone-card" onclick="showZoneInfo('console')">
+            <img
+              src="images/CONS.jpg"
+              alt="Консольная зона"
+              class="card-image"
+            />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">Консольная зона</div>
+              <p>PS5 и Xbox Series X с большими 4K телевизорами</p>
+            </div>
+          </div>
+          <div class="zone-card" onclick="showZoneInfo('vr')">
+            <img src="images/VR.jpg" alt="VR-зона" class="card-image" />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">VR-зона</div>
+              <p>Погрузитесь в виртуальную реальность с HTC Vive Pro</p>
+            </div>
+          </div>
+          <div class="zone-card" onclick="showZoneInfo('vip')">
+            <img src="images/VIP.jpg" alt="VIP-зона" class="card-image" />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">VIP-зона</div>
+              <p>Премиум-зона с топовым оборудованием и сервисом</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tournaments" class="page">
+        <h1>Турниры</h1>
+        <div class="tournaments-container">
+          <div class="tournament-card" onclick="showTournamentInfo('csgo')">
+            <img src="images/CSGO.jpg" alt="CS:GO Турнир" class="card-image" />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">CS:GO Турнир</div>
+              <p>Еженедельные соревнования с крутыми призами</p>
+            </div>
+          </div>
+          <div class="tournament-card" onclick="showTournamentInfo('dota')">
+            <img src="images/Dota.jpg" alt="Dota 2 Турнир" class="card-image" />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">Dota 2 Турнир</div>
+              <p>Командные сражения за призовой фонд</p>
+            </div>
+          </div>
+          <div class="tournament-card" onclick="showTournamentInfo('fifa')">
+            <img
+              src="images/FIFA.jpg"
+              alt="FIFA 23 Турнир"
+              class="card-image"
+            />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">FIFA 23 Турнир</div>
+              <p>Стань лучшим футбольным менеджером</p>
+            </div>
+          </div>
+          <div class="tournament-card" onclick="showTournamentInfo('fortnite')">
+            <img
+              src="images/FORT.jpg"
+              alt="Fortnite Турнир"
+              class="card-image"
+            />
+            <div class="card-hover-info">Нажмите для подробностей</div>
+            <div class="card-overlay">
+              <div class="card-title">Fortnite Турнир</div>
+              <p>Battle Royale соревнования каждые выходные</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" class="page">
+        <h1 class="contact-title">Контакты</h1>
+        <div class="contact-intro">
+          <p>
+            Присоединяйтесь к нашему игровому сообществу и погрузитесь в мир
+            киберспорта
+          </p>
+        </div>
+
+        <div class="contacts-wrapper">
+          <div class="contacts-info">
+            <div class="contact-card">
+              <div class="contact-icon">📍</div>
+              <div class="contact-detail">
+                <h3>Наш адрес</h3>
+                <p>Екатеринбург, ул. 8 Марта, д. 32а</p>
+                <p class="detail-note">
+                  5 минут от станции метро "Площадь 1905 года"
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">📱</div>
+              <div class="contact-detail">
+                <h3>Телефон</h3>
+                <p>+7 (999) 123-45-67</p>
+                <p class="detail-note">Ежедневно с 10:00 до 23:00</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-detail">
+                <h3>E-mail</h3>
+                <p>info@gamezone.ru</p>
+                <p class="detail-note">Ответим в течение 24 часов</p>
+              </div>
+            </div>
+
+            <div class="hours-card">
+              <h3>Время работы</h3>
+              <div class="hours-grid">
+                <div class="day">Понедельник - Четверг</div>
+                <div class="time">10:00 - 23:00</div>
+                <div class="day">Пятница - Суббота</div>
+                <div class="time">10:00 - 24:00</div>
+                <div class="day">Воскресенье</div>
+                <div class="time">12:00 - 22:00</div>
+              </div>
+              <div class="hours-note">
+                Ночные марафоны: каждая пятница и суббота с 22:00 до 08:00
+              </div>
+            </div>
+
+            <div class="social-card">
+              <h3>Мы в соцсетях</h3>
+              <div class="social-icons">
+                <a href="#" class="social-link"
+                  ><div class="social-icon">VK</div></a
+                >
+                <a href="#" class="social-link"
+                  ><div class="social-icon">TG</div></a
+                >
+                <a href="#" class="social-link"
+                  ><div class="social-icon">YT</div></a
+                >
+                <a href="#" class="social-link"
+                  ><div class="social-icon">DS</div></a
+                >
+              </div>
+              <p>Подписывайтесь, чтобы следить за турнирами и акциями</p>
+            </div>
+          </div>
+
+          <div class="map-container">
+            <div class="map-header">
+              <h3>Как нас найти</h3>
+            </div>
+            <div class="map-wrapper">
+              <!-- Обновленная карта с центрированием на адресе клуба -->
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A8b03f246b8cda304d09db81d4e7c2dd29e5ddff5a9db02aa7547ee67f60a0a4d&amp;source=constructor&amp;scroll=false&amp;lang=ru_RU&amp;z=16&amp;controls=zoomControl&amp;ll=56.837654%2C60.615996&amp;pt=56.837654,60.615996&amp;text=GameZone - ул. 8 Марта, д. 32а"
+                width="100%"
+                height="400"
+                frameborder="0"
+              >
+              </iframe>
+            </div>
+            <div class="map-directions">
+              <div class="direction-item">
+                <div class="direction-icon">🚇</div>
+                <div class="direction-text">
+                  Станция метро "Площадь 1905 года", выход на улицу 8 Марта
+                </div>
+              </div>
+              <div class="direction-item">
+                <div class="direction-icon">🚌</div>
+                <div class="direction-text">
+                  Автобусы 21, 32, 57 - остановка "Театр музкомедии"
+                </div>
+              </div>
+              <div class="direction-item">
+                <div class="direction-icon">🚗</div>
+                <div class="direction-text">
+                  Парковка для клиентов со стороны двора
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-section">
+          <div class="form-header">
+            <h2>Остались вопросы?</h2>
+            <p>Напишите нам, и мы свяжемся с вами в ближайшее время</p>
+          </div>
+          <form class="contact-form">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Ваше имя"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-input"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-input" placeholder="Телефон" />
+            </div>
+            <div class="form-group">
+              <textarea
+                class="form-textarea"
+                placeholder="Ваше сообщение"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="form-submit glow-animation">
+              Отправить сообщение
+            </button>
+          </form>
+        </div>
+
+        <div class="contacts-cta">
+          <h3>Готовы присоединиться?</h3>
+          <p>Приходите к нам и ощутите атмосферу настоящего киберспорта!</p>
+          <button
+            class="main-button pulse-animation"
+            onclick="navigateTo('home')"
+          >
+            На главную
+          </button>
+        </div>
+      </section>
+
+      <!-- Модальные окна для игровых зон -->
+      <div id="pcZoneModal" class="info-modal">
+        <div class="modal-content">
+          <button class="modal-close" onclick="closeModal('pcZoneModal')">
+            ✕
+          </button>
+          <img src="images/BASE.jpg" alt="Зона с ПК" class="modal-image" />
+          <h2 class="modal-title">Зона с ПК</h2>
+          <div class="modal-description">
+            <p>
+              Наша основная игровая зона оснащена 20 высокопроизводительными
+              компьютерами для комфортной игры в любые современные игры на
+              максимальных настройках графики.
+            </p>
+            <p>
+              Каждое рабочее место оборудовано удобным игровым креслом и
+              качественной периферией для полного погружения в игровой процесс.
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Характеристики компьютеров:</h3>
+            <ul>
+              <li>Процессор: Intel Core i7-12700K / AMD Ryzen 7 5800X</li>
+              <li>Видеокарта: NVIDIA GeForce RTX 3070 8GB GDDR6</li>
+              <li>Оперативная память: 32GB DDR4 3600MHz</li>
+              <li>Накопители: SSD NVMe 1TB</li>
+              <li>Мониторы: 27" 2K 165Hz с низким временем отклика</li>
+              <li>
+                Периферия: Механические клавиатуры, игровые мыши с высоким DPI
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="consoleZoneModal" class="info-modal">
+        <div class="modal-content">
+          <button class="modal-close" onclick="closeModal('consoleZoneModal')">
+            ✕
+          </button>
+          <img
+            src="images/CONS.jpg"
+            alt="Консольная зона"
+            class="modal-image"
+          />
+          <h2 class="modal-title">Консольная зона</h2>
+          <div class="modal-description">
+            <p>
+              Наша консольная зона предлагает игры на последних консолях
+              PlayStation 5 и Xbox Series X с большими 4K-телевизорами для
+              максимального удовольствия от игрового процесса.
+            </p>
+            <p>
+              Зона разделена на комфортные игровые места с мягкими диванами и
+              креслами-мешками для отдыха с друзьями.
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Оборудование:</h3>
+            <ul>
+              <li>10 игровых станций PlayStation 5</li>
+              <li>8 игровых станций Xbox Series X</li>
+              <li>4K телевизоры Samsung 55" с поддержкой HDR</li>
+              <li>Звуковые системы 5.1 с объемным звуком</li>
+              <li>Дополнительные геймпады для мультиплеера</li>
+              <li>Библиотека из более чем 100 игр</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="vrZoneModal" class="info-modal">
+        <div class="modal-content">
+          <button class="modal-close" onclick="closeModal('vrZoneModal')">
+            ✕
+          </button>
+          <img src="images/VR.jpg" alt="VR-зона" class="modal-image" />
+          <h2 class="modal-title">VR-зона</h2>
+          <div class="modal-description">
+            <p>
+              Испытайте непередаваемые ощущения от погружения в виртуальную
+              реальность! Наша VR-зона позволяет играть в самые современные
+              VR-игры на самом продвинутом оборудовании.
+            </p>
+            <p>
+              Просторные игровые площадки обеспечивают свободу движений и полное
+              погружение в игровой процесс.
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Оборудование:</h3>
+            <ul>
+              <li>Шлемы виртуальной реальности HTC Vive Pro 2</li>
+              <li>Беспроводные адаптеры для свободы движения</li>
+              <li>Контроллеры для погружения в VR-мир</li>
+              <li>Игровая зона 4x4 метра для каждого игрока</li>
+              <li>Мощные компьютеры для обработки VR-контента</li>
+              <li>Большой выбор VR-игр и симуляторов</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="vipZoneModal" class="info-modal">
+        <div class="modal-content">
+          <button class="modal-close" onclick="closeModal('vipZoneModal')">
+            ✕
+          </button>
+          <img src="images/VIP.jpg" alt="VIP-зона" class="modal-image" />
+          <h2 class="modal-title">VIP-зона</h2>
+          <div class="modal-description">
+            <p>
+              Наша эксклюзивная VIP-зона предлагает максимальный комфорт и
+              производительность для самых требовательных геймеров.
+              Изолированное пространство, премиальное оборудование и
+              персональное обслуживание сделают ваш игровой опыт незабываемым.
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Преимущества VIP-зоны:</h3>
+            <ul>
+              <li>
+                Топовые игровые ПК с NVIDIA RTX 4080 и Intel Core i9-13900K
+              </li>
+              <li>Професcиональные кресла DXRacer серии Master</li>
+              <li>Изогнутые 32" мониторы с разрешением 4K и частотой 240Hz</li>
+              <li>Премиальная игровая периферия Razer и SteelSeries</li>
+              <li>Персональное обслуживание и бесплатные напитки</li>
+              <li>Отдельная звукоизолированная комната</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальные окна для турниров -->
+      <div id="csgoTournamentModal" class="info-modal">
+        <div class="modal-content">
+          <button
+            class="modal-close"
+            onclick="closeModal('csgoTournamentModal')"
+          >
+            ✕
+          </button>
+          <img src="images/CSGO.jpg" alt="CS:GO Турнир" class="modal-image" />
+          <h2 class="modal-title">CS:GO Турнир</h2>
+          <div class="modal-description">
+            <p>
+              Еженедельные соревнования по Counter-Strike: Global Offensive для
+              команд из 5 человек. Турниры проходят по системе Double
+              Elimination с отличным призовым фондом.
+            </p>
+            <p>
+              Каждую пятницу в 18:00 начинается регистрация команд, а сами матчи
+              стартуют в 19:00.
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Детали турнира:</h3>
+            <ul>
+              <li>Формат: 5vs5</li>
+              <li>Система: Double Elimination</li>
+              <li>Призовой фонд: 30 000 ₽</li>
+              <li>Стоимость участия: 2 500 ₽ с команды</li>
+              <li>Регулярность: каждую пятницу</li>
+              <li>Трансляция финальных матчей на большом экране</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="dotaTournamentModal" class="info-modal">
+        <div class="modal-content">
+          <button
+            class="modal-close"
+            onclick="closeModal('dotaTournamentModal')"
+          >
+            ✕
+          </button>
+          <img src="images/Dota.jpg" alt="Dota 2 Турнир" class="modal-image" />
+          <h2 class="modal-title">Dota 2 Турнир</h2>
+          <div class="modal-description">
+            <p>
+              Ежемесячный турнир по Dota 2 с крупным призовым фондом. Командное
+              соревнование формата 5vs5 с профессиональной организацией и
+              судейством.
+            </p>
+            <p>
+              Турниры проводятся в последнюю субботу каждого месяца,
+              предварительная регистрация обязательна.
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Детали турнира:</h3>
+            <ul>
+              <li>Формат: 5vs5</li>
+              <li>Система: Single Elimination + групповая стадия</li>
+              <li>Призовой фонд: 50 000 ₽</li>
+              <li>Стоимость участия: 3 000 ₽ с команды</li>
+              <li>Регулярность: последняя суббота месяца</li>
+              <li>Комментирование всех матчей профессиональным стримером</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="fifaTournamentModal" class="info-modal">
+        <div class="modal-content">
+          <button
+            class="modal-close"
+            onclick="closeModal('fifaTournamentModal')"
+          >
+            ✕
+          </button>
+          <img src="images/FIFA.jpg" alt="FIFA 23 Турнир" class="modal-image" />
+          <h2 class="modal-title">FIFA 23 Турнир</h2>
+          <div class="modal-description">
+            <p>
+              Индивидуальные соревнования по FIFA 23 для всех любителей
+              футбольных симуляторов. Турниры проходят каждое воскресенье в
+              специальной консольной зоне нашего клуба.
+            </p>
+            <p>
+              Выбирай любимую команду и докажи, что ты лучший футбольный
+              менеджер!
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Детали турнира:</h3>
+            <ul>
+              <li>Формат: 1vs1</li>
+              <li>Система: Swiss System</li>
+              <li>Призовой фонд: 15 000 ₽</li>
+              <li>Стоимость участия: 500 ₽</li>
+              <li>Регулярность: каждое воскресенье</li>
+              <li>Возможность сыграть на PS5 или Xbox Series X</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="fortniteTournamentModal" class="info-modal">
+        <div class="modal-content">
+          <button
+            class="modal-close"
+            onclick="closeModal('fortniteTournamentModal')"
+          >
+            ✕
+          </button>
+          <img
+            src="images/FORT.jpg"
+            alt="Fortnite Турнир"
+            class="modal-image"
+          />
+          <h2 class="modal-title">Fortnite Турнир</h2>
+          <div class="modal-description">
+            <p>
+              Еженедельные турниры по Fortnite в формате Battle Royale.
+              Соревнуйтесь с другими игроками за звание последнего выжившего и
+              выигрывайте ценные призы!
+            </p>
+            <p>
+              Турниры проходят каждую субботу в двух категориях: соло и дуо.
+            </p>
+          </div>
+          <div class="modal-features">
+            <h3>Детали турнира:</h3>
+            <ul>
+              <li>Формат: Solo и Duo</li>
+              <li>Система: Points-based (6 матчей)</li>
+              <li>Призовой фонд: 20 000 ₽</li>
+              <li>Стоимость участия: 400 ₽</li>
+              <li>Регулярность: каждую субботу</li>
+              <li>Стриминг на большие экраны в клубе</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
