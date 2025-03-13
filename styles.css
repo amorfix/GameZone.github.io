@@ -6,19 +6,6 @@ body {
   background-color: #121212;
   color: #ffffff;
   text-align: center;
-  /* Добавляем рамку вокруг всего контента */
-  border: 8px solid rgba(0, 255, 255, 0.1);
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
-/* Контейнер для всего контента с отступами */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 /* ======== НАВИГАЦИЯ ======== */
@@ -29,12 +16,10 @@ header {
   padding: 20px;
   background-color: #1a1a1a;
   position: fixed;
-  width: calc(100% - 16px); /* Учитываем рамку сайта */
-  top: 8px; /* Отступ от верхней границы сайта */
-  left: 8px; /* Отступ от левой границы сайта */
+  width: 100%;
+  top: 0;
   z-index: 1000;
   box-shadow: 0px 5px 10px rgba(0, 255, 255, 0.5);
-  box-sizing: border-box;
 }
 
 .logo {
@@ -42,8 +27,6 @@ header {
   font-weight: bold;
   color: #00ffff;
   animation: glow 1.5s infinite alternate;
-  z-index: 1001; /* Поверх гамбургер-меню */
-  margin-left: 20px;
 }
 
 @keyframes glow {
@@ -55,35 +38,10 @@ header {
   }
 }
 
-/* Добавление гамбургер-меню для мобильных устройств */
-.mobile-menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  cursor: pointer;
-  z-index: 1001; /* Поверх других элементов */
-}
-
-.mobile-menu-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: #00ffff;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-nav {
-  margin-right: 20px;
-}
-
 nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  margin: 0;
 }
 
 nav ul li {
@@ -105,7 +63,7 @@ nav ul li a:hover {
 /* ======== ОБЩИЕ СЕКЦИИ ======== */
 .page {
   display: none;
-  padding: 120px 20px 40px; /* Увеличен верхний отступ для шапки */
+  padding: 120px 50px;
   min-height: 100vh;
 }
 
@@ -122,73 +80,6 @@ nav ul li a:hover {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Мобильная навигация и адаптивность */
-@media (max-width: 768px) {
-  header {
-    padding: 15px;
-    width: calc(100% - 16px); /* Учитываем рамку сайта */
-  }
-
-  .logo {
-    margin-left: 5px;
-  }
-
-  .mobile-menu-toggle {
-    display: flex;
-    margin-right: 5px;
-  }
-
-  nav {
-    margin-right: 0;
-  }
-
-  nav ul {
-    position: fixed;
-    flex-direction: column;
-    background-color: rgba(26, 26, 26, 0.95);
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    padding-top: 80px;
-    transition: right 0.3s ease-in-out;
-    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-  }
-
-  nav.active ul {
-    right: 0;
-  }
-
-  nav ul li {
-    margin: 15px 0;
-  }
-
-  nav ul li a {
-    display: block;
-    padding: 10px;
-    font-size: 20px;
-  }
-
-  /* Смещаем контент вниз для мобильных */
-  .page {
-    padding-top: 100px;
-  }
-
-  /* Анимация для мобильного меню */
-  .mobile-menu-toggle.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-  }
-
-  .mobile-menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-menu-toggle.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
   }
 }
 
@@ -238,7 +129,6 @@ nav ul li a:hover {
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
   cursor: pointer;
-  border: none;
 }
 
 .main-button:hover {
@@ -270,14 +160,12 @@ nav ul li a:hover {
   cursor: pointer;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s;
   box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.3);
-  border: 2px solid transparent;
 }
 
 .zone-card:hover,
 .tournament-card:hover {
   transform: translateY(-10px);
   box-shadow: 0px 15px 30px rgba(0, 255, 255, 0.5);
-  border-color: #00ffff;
 }
 
 .card-image {
@@ -318,7 +206,6 @@ nav ul li a:hover {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  backdrop-filter: blur(5px);
 }
 
 .info-modal.active {
@@ -336,9 +223,8 @@ nav ul li a:hover {
   box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.7);
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
+  max-height: 90vh;
   overflow-y: auto;
-  border: 2px solid #00ffff;
 }
 
 .modal-close {
@@ -416,24 +302,26 @@ nav ul li a:hover {
   transform: translateY(0);
 }
 
-/* Адаптивность карточек для мобильных устройств */
+/* ======== КОНТАКТЫ ======== */
+.contacts-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.tariff-description {
+  margin-top: 30px;
+  max-width: 800px;
+  text-align: left;
+}
+
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .zone-card,
   .tournament-card {
     flex: 0 1 100%;
-    height: 250px; /* Меньше для мобильных */
-    margin-bottom: 20px;
-  }
-
-  .card-overlay {
-    transform: translateY(0);
-    background-color: rgba(0, 0, 0, 0.6);
-    height: auto;
-    padding: 10px;
-  }
-
-  .card-hover-info {
-    display: none; /* Скрываем на мобильных */
   }
 
   .modal-content {
@@ -670,6 +558,7 @@ nav ul li a:hover {
   }
 }
 
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .main-title {
     font-size: 36px;
@@ -735,14 +624,12 @@ nav ul li a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 2px solid transparent;
 }
 
 .tariff-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
   background-color: rgba(30, 30, 30, 0.9);
-  border-color: #00ffff;
 }
 
 .tariff-card.popular {
@@ -925,6 +812,20 @@ nav ul li a:hover {
   margin-bottom: 30px;
 }
 
+.glow-animation {
+  animation: glow-button 2s infinite alternate;
+}
+
+@keyframes glow-button {
+  from {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+  }
+}
+
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .tariff-card {
     width: 100%;
@@ -1005,8 +906,6 @@ nav ul li a:hover {
 .map-wrapper {
   height: 400px;
   overflow: hidden;
-  border-radius: 0 0 10px 10px;
-  border: 1px solid rgba(0, 255, 255, 0.3);
 }
 
 .map-wrapper iframe {
@@ -1173,20 +1072,6 @@ nav ul li a:hover {
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 255, 255, 0.3);
-  animation: borderPulse 4s infinite;
-}
-
-@keyframes borderPulse {
-  0% {
-    border-color: rgba(0, 255, 255, 0.3);
-  }
-  50% {
-    border-color: rgba(255, 0, 255, 0.5);
-  }
-  100% {
-    border-color: rgba(0, 255, 255, 0.3);
-  }
 }
 
 .form-header {
@@ -1223,14 +1108,13 @@ nav ul li a:hover {
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 15px;
+  padding: 12px 15px;
   background-color: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 8px;
   color: #ffffff;
   font-size: 16px;
   transition: all 0.3s ease;
-  box-sizing: border-box;
 }
 
 .form-input:focus,
@@ -1284,6 +1168,36 @@ nav ul li a:hover {
   margin-bottom: 30px;
 }
 
+/* Анимации */
+.glow-animation {
+  animation: glow-button 2s infinite alternate;
+}
+
+@keyframes glow-button {
+  from {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+  }
+}
+
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .contacts-wrapper {
@@ -1291,7 +1205,7 @@ nav ul li a:hover {
   }
 
   .map-container {
-    order: -1; /* Показываем карту первой на мобильных устройствах */
+    order: -1;
   }
 
   .contact-form {
@@ -1300,11 +1214,6 @@ nav ul li a:hover {
 
   .form-group:nth-child(n) {
     grid-column: 1;
-  }
-
-  .form-submit {
-    width: 100%; /* Кнопка на всю ширину */
-    margin-top: 10px;
   }
 
   .contact-title {
